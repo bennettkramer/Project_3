@@ -5,7 +5,7 @@ import streamlit as st
 
 url = "https://api.makcorps.com/auth"
 header = {'Content-Type':'application/json'}
-obj = {"username":"randerson1994","password":"Password123"}
+obj = {"username":"ryanderson94","password":"Mother_fucker1"}
 
 request = requests.post(url=url, json = obj, headers=header)
 
@@ -48,20 +48,20 @@ k = 1
 
 while data[i][0]['hotelName'] != last_hotel:
     hotel_list.append(data[i][0]['hotelName'])
-    
+        
     while k < 6:
         if type(data[i][1][n][f'price{k}']) == str:
             hotel_prices[f'Vendor {k}'] = data[i][1][n][f'vendor{k}']
             hotel_prices[f'Price {k}'] = float(data[i][1][n][f'price{k}']) + float(data[i][1][n][f'tax{k}'])
         k += 1
         n += 1
-    
+        
     hotel_values[data[i][0]['hotelName']] = hotel_prices
     hotel_prices = {}
     i += 1
     k = 1
     n = 0
 
-if st.button('Display List'):
-    hotel_values_df = pd.DataFrame.from_dict(hotel_values)
-    st.dataframe(hotel_values_df)
+hotel_values_df = pd.DataFrame.from_dict(hotel_values)
+
+st.dataframe(hotel_values_df)
