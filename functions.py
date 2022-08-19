@@ -50,3 +50,9 @@ def get_hotels(destination_id, checkin_date, checkout_date, adults_number, room_
     hotel_response = requests.request("GET", url = hotel_search_url, headers = headers, params = hotel_search_querystring)
 
     return hotel_response
+
+# TAO:
+# Take the get_hotels function and input all the information as depicted by the booking. Then you will need to use the following line of code
+# to parse out the price you're looking for:
+# hotel_data = hotel_response.json()
+# hotel_data['result'][i]['price_breakdown']['all_inclusive_price']
