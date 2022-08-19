@@ -5,17 +5,16 @@ from dotenv import load_dotenv
 import os
 
 # Load dotenv file
-def header():
-    load_dotenv('api_key.env')
-    booking_api_key = os.getenv('API_KEY')
-    headers = {
-	"X-RapidAPI-Key": booking_api_key,
-	"X-RapidAPI-Host": "booking-com.p.rapidapi.com"
-    }
-    return headers
+
+load_dotenv()
+booking_api_key = os.getenv('API_KEY')
+headers = {
+"X-RapidAPI-Key": booking_api_key,
+"X-RapidAPI-Host": "booking-com.p.rapidapi.com"
+}
 
 
-def get_location(headers, city):
+def get_location(city):
     location_search_url = "https://booking-com.p.rapidapi.com/v1/hotels/locations"
     location_querystring = {
     "locale":"en-gb",
@@ -31,7 +30,7 @@ def get_location(headers, city):
     return destination_id
 
 
-def get_hotels(destination_id, checkin_date, checkout_date, adults_number, room_number, headers):
+def get_hotels(destination_id, checkin_date, checkout_date, adults_number, room_number):
     hotel_search_url = "https://booking-com.p.rapidapi.com/v1/hotels/search"
 
     hotel_search_querystring = {
