@@ -33,7 +33,7 @@ Upon succesful deployment of the Hotel.io platform, we aim to create a NFT / Sma
 
 Contributors for the development and deployment of the Hotel.io platform and marketplace include:
 
-1. Ryan Anderson: a) Streamlit Engineer b)
+1. Ryan Anderson: a) Repository Administrator b) Streamlit Engineer
 2. Tao Chen: a) Streamlit Engineer b)
 3. James Handral: a) Streamlit Engineer b)
 4. Colton Mayes: a) Streamlit Engineer b) Final Presentation c) README
