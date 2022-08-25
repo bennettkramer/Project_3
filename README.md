@@ -19,7 +19,7 @@ An integration with Booking.com using the rapidAPI in order to obtain real-time 
 
 ### NOTE
 
-* A subscription to utilize rapidAPI is needed in order to succesfully run the application
+* A subscription to utilize rapidAPI and Pinata is needed in order to succesfully run the application
 
 ## Technologies
 
@@ -36,52 +36,83 @@ Majority of the above libraries should be part of the base applications that wer
 
 ### 1. Booking the Hotel: RapidAPI Pull
 
-When it comes to the booking interface, we have not re-invented the wheel, and frankly there is still room for a number of improvements. Leveraging Streamlit, a user can simply log in to our App, search the city they would like to visit, enter their check in and check out dates, indicate the number of guests and number of rooms, and let the Booking.com API perform the heavy lifting. Users are then presented with a list of hotels, sorted by popularity, from which they can select. The dropdown not only lists the name of the hotel, but also the total cost of their stay and average cost per night for easy comparison. Once the user is satisfied with their selection, the following step is to enter your personal wallet address and purchase!
+When it comes to the booking interface, we have not re-invented the wheel. Leveraging Streamlit, a user can simply log in to our App, search the city they would like to visit, enter their check in and check out dates, indicate the number of guests and number of rooms, and let the Booking.com API perform the heavy lifting. Users are then presented with a list of hotels, sorted by popularity, from which they can select. The dropdown not only lists the name of the hotel, but also the total cost of their stay and average cost per night for easy comparison. Once the user is satisfied with their selection, the following step is to enter your personal wallet address and purchase!
 
-**link to the hotel booking file**
+On the back-end, a RapidAPI call is made to pull real-time hotel information within the parameters of a screening, which include: locations, prices, dates, popularity, hotel operators, and more. the platform loads the saved contract data (ABI file) and smart contract address that deployed the contract. This allows for the back-end to interact with the front-end application, which leverages an instance of web3.py for communication to the Blockchain smart contract.
+
+**Please refer to the link and images for furhter detail:**
+[Hotel Reservation App](https://github.com/Ryanderson94/Project_3/blob/main/hotel_reservation_app.py) (Rows 18 - 83)
 
 #### INPUT
 
-##### Image 1: Calling the data
+##### *Back-end: Calling the data through RapidAPI (Booking.com API)*
 ![image](https://user-images.githubusercontent.com/24529411/186524189-eab9dde0-c018-45b6-aded-d74b0f233564.png)
 
 #### OUTPUT
 
+##### *Front-End: Option criteria when booking a reservation*
+INSERT IMAGE
+
 
 ### 2. Creating a Smart Contract: Minting an the Hotel Room Purchase into an NFT
 
-Upon choosing your adventure destination, our application then begins the exciting process of minting an NFT reflecting the details of your booking. The process begins with a customer inputting their wallet account address to start the call to the deployed Hotelbooking_NFT smart contract which utilizes ERC721Full library for its industry standards for Non Fungible Token functions. The needed variables/information for our smart contract call are the hotel name, check in date, departure date and confirmation number which should be automatically pulled from the purchased reservation made by the customer. With this information the deployed contract will insert them into a dictionary called room-confirmation  and start the process of minting a unique Hotel Reservation Token. Once the token has been minted we connect the TokenID to a unique URI (Uniform Resource Identifer) which identifies the location of the token on the BlockChain/IPFS and permanently link the tokenID to the created room-confirmation dictionary. Finally after the call to the smart contract has been executed and included on the Blockchain the minted TokenID, the transaction receipt mined and a hotel reservation IPFS link to your tokenized reservation NFT is provided to the customer for their future reference. With a created NFT for their reservation they will have the capability of listing it on our secondary market.
+Upon choosing an adventure destination, the Hotel.io application begins the process of minting an NFT reflecting the details of your booking on the back-end. The process is launched by a customer inputting their wallet account address to start the call to the deployed Hotelbooking_NFT smart contract which utilizes ERC721Full library for its industry standards for Non Fungible Token functions. 
 
-**link to the smart contract file**
+Key variable include:
+
+* Hotel name
+* Check-in date
+* Departure date
+* Confirmation number 
+
+Note that these variables should automatically be pulled from the purchased reservation made by the customer. 
+
+With this information the deployed contract will insert them into a dictionary called <ins>**room-confirmation**</ins> and start the process of minting a unique Hotel Reservation Token. Once the token has been minted we connect the TokenID to a unique URI (Uniform Resource Identifer) which identifies the location of the token on the BlockChain/IPFS and permanently link the tokenID to the created room-confirmation dictionary. 
+
+Finally after the call to the smart contract has been executed and included on the Blockchain the minted TokenID, the transaction receipt mined and a hotel reservation IPFS link to your tokenized reservation NFT is provided to the customer for their future reference. With a created NFT for their reservation they will have the capability of listing it on our secondary market. 
+
+**Please refer to the link and images for furhter detail:**
+[Hotel Reservation App](https://github.com/Ryanderson94/Project_3/blob/main/hotel_reservation_app.py) (Rows 86 - 273)
 
 #### INPUT
 
-##### Image 1: Inputing room criteria
+##### *Back-End: Inputing room criteria*
 ![image](https://user-images.githubusercontent.com/24529411/186529554-6c59cc91-79b7-4ccc-b5a2-117d7aafd8bb.png)
 
-##### Image 2: Tokenizing the reservation
+##### *Back-End: Tokenizing the reservation*
 ![image](https://user-images.githubusercontent.com/24529411/186529756-ab7a8f41-ef2c-4a06-8d87-ab0268e964ce.png)
 
 #### OUTPUT
 
+##### *Front-End: Confirmation Recipt of Hotel Reservation (NFT / Tokenization)*
+INSERT IMAGE
 
 ### 3. Secondary Market: Relisting a Purchased Hotel Room
 
 While we attempted to design a way to disrupt the hotel market, as a byproduct we ended up creating an entirely new market to supplement it with our booking NFT market. A key component of this platform is the ability to empower consumers and give them the flexibility modern life demands. Within our secondary market you will find a suite of tools, ranging from being able to check the current price of any bookings you currently hold to browsing all other listings tailored to your unique filters and parameters. Clients can list or delist their bookings based off their desires, while simultaneously being able to gauge the current market for their asset and determine the best path forward. The pieces that make up this venture have been tried and tested in other fields, giving us confidence that we can succeed and scale this concept as growth accelerates.
 
+**Please refer to the link and images for furhter detail:**
+[Secondary Market App](https://github.com/Ryanderson94/Project_3/blob/main/secondary_market.py)
+
 #### INPUT
 
-##### Image 1: Calling the data
-![image](https://user-images.githubusercontent.com/24529411/186524189-eab9dde0-c018-45b6-aded-d74b0f233564.png)
+##### *Title*
+INSERT IMAGE
 
 #### OUTPUT
 
-
-**link to creating the secondary market file**
+##### *Title*
+INSERT IMAGE
 
 ## Development Pipeline
 
-Upon succesful deployment of the Hotel.io platform, we aim to create a NFT / Smart Contract system to not only allow trading of hotel rooms within a secondary market, but also to create secondary marketplaces for airfaires, car rentals and airbnbs.
+Upon succesful deployment of the Hotel.io platform, we aim to create a NFT / Smart Contract system to not only allow trading of hotel rooms within a secondary market, but also exapnding into adjacent markets, which include secondary marketplaces for the following:
+
+1) Airfaires 
+2) Car rentals
+3) Airbnbs
+
+There is a tremendous market opportunity and we believe that demand will continue to rise in an increasingly virtual and unpredictable environment.
 
 ## Concluding Thoughts
 
@@ -91,8 +122,8 @@ We have seamlessly integrated and connected our disparate sections into one stre
 
 Contributors for the development and deployment of the Hotel.io platform and marketplace include:
 
-1. Ryan Anderson: a) Streamlit Engineer (RapidAPI pull) b)
+1. Ryan Anderson: a) Streamlit Engineer (RapidAPI pull) b) Repository Administrator
 2. Tao Chen: a) Streamlit Engineer (secondary market)
-3. James Handral: a) Streamlit Engineer (smart Contract / NFT)
-4. Colton Mayes: a) Streamlit Engineer (merging the three applications) b) Final Presentation c) README
+3. James Handral: a) Streamlit Engineer (NFT / Tokenization)
+4. Colton Mayes: a) Streamlit Engineer (Merging of RapidAPI and NFT / Tokenization) b) Final Presentation c) README
 5. Bennett Kramer: a) Final Presentation b) README
